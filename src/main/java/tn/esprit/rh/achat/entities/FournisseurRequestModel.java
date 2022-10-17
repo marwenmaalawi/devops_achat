@@ -18,12 +18,21 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class FournisseurRequestModel {
 
 
-	private Long idFournisseur;
-	private String code;
-	private String libelle;
-	private CategorieFournisseur  categorieFournisseur;
-	private Set<Facture> factures;
-    private Set<SecteurActivite> secteurActivites;
-    private DetailFournisseur detailFournisseur;
+	public FournisseurRequestModel() {
+		super();
+	}
+	public FournisseurRequestModel(Long idFournisseur, String code, String libelle) {
+		super();
+		this.idFournisseur = idFournisseur;
+		this.code = code;
+		this.libelle = libelle;
+	}
+	public Long idFournisseur;
+	public String code;
+	public String libelle;
+	public CategorieFournisseur  categorieFournisseur;
+	public Set<Facture> factures;
+	public Set<SecteurActivite> secteurActivites;
+	public DetailFournisseur detailFournisseur;
     
 }

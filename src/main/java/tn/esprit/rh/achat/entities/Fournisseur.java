@@ -26,6 +26,16 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Fournisseur implements Serializable {
 
+	
+	public Fournisseur() {
+		super();
+	}
+	public Fournisseur(Long idFournisseur, String code, String libelle) {
+		super();
+		this.idFournisseur = idFournisseur;
+		this.code = code;
+		this.libelle = libelle;
+	}
 	private static final long serialVersionUID = 1L;
 
 	@Id
