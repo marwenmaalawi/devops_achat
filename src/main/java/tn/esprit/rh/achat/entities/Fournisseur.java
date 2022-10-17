@@ -27,9 +27,7 @@ import lombok.Setter;
 public class Fournisseur implements Serializable {
 
 	
-	public Fournisseur() {
-		super();
-	}
+	
 	public Fournisseur(Long idFournisseur, String code, String libelle) {
 		super();
 		this.idFournisseur = idFournisseur;
