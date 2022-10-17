@@ -71,6 +71,7 @@
 				</configuration>
 			</plugin>
 			<plugin>
+<<<<<<< HEAD
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>3.1.0</version>
@@ -78,7 +79,22 @@
                     <useReleaseProfile>true</useReleaseProfile>
                 </configuration>
             </plugin>
+=======
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+			</plugin>
+			  <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.7.0.1746</version>
+      </plugin>
+>>>>>>> 3e34927888ecc3d2e531ed0fdcbf4ad5500d914b
 		</plugins>
+
+   
+  
+
 	</build>
 
 </project>
