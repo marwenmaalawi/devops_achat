@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.rh.achat.entities.Produit;
+import tn.esprit.rh.achat.entities.ProduitRequestModel;
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.repositories.CategorieProduitRepository;
 import tn.esprit.rh.achat.repositories.ProduitRepository;
@@ -25,7 +26,7 @@ public class ProduitServiceImpl implements IProduitService {
 
 	@Override
 	public List<Produit> retrieveAllProduits() {
-		List<Produit> produits = (List<Produit>) produitRepository.findAll();
+		List<Produit> produits =  produitRepository.findAll();
 		for (Produit produit : produits) {
 			log.info(" Produit : " + produit);
 		}
@@ -33,7 +34,7 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Transactional
-	public Produit addProduit(Produit p) {
+	public Produit addProduit(ProduitRequestModel p) {
 		produitRepository.save(p);
 		return p;
 	}
@@ -46,7 +47,7 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public Produit updateProduit(Produit p) {
+	public Produit updateProduit(ProduitRequestModel p) {
 		return produitRepository.save(p);
 	}
 
@@ -59,7 +60,7 @@ public class ProduitServiceImpl implements IProduitService {
 
 	@Override
 	public void assignProduitToStock(Long idProduit, Long idStock) {
-		Produit produit = produitRepository.findById(idProduit).orElse(null);
+		Produit produit = produitRepository.findById(idProduit);
 		Stock stock = stockRepository.findById(idStock).orElse(null);
 		produit.setStock(stock);
 		produitRepository.save(produit);
