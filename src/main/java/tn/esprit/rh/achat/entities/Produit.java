@@ -28,9 +28,7 @@ public class Produit implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public Produit() {
-		super();
-	}
+
 	public Produit(Long idProduit, String codeProduit, String libelleProduit, float prix) {
 		super();
 		this.idProduit = idProduit;
