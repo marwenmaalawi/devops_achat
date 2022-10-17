@@ -78,14 +78,13 @@
                     <useReleaseProfile>true</useReleaseProfile>
                 </configuration>
             </plugin>
-<<<<<<< HEAD
-=======
-            <plugin>
+
+         <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>3.1.0</version>
 			</plugin>
->>>>>>> 33aaebc30109e41113df61c6ab82e45b6c729190
+
 		</plugins>
 	</build>
 
