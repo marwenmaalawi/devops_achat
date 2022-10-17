@@ -15,21 +15,29 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ProduitRequestModel {
 
+	
+	public ProduitRequestModel() {
+		super();
+	}
+
+	public ProduitRequestModel(Long idProduit, String codeProduit, String libelleProduit, float prix) {
+		super();
+		this.idProduit = idProduit;
+		this.codeProduit = codeProduit;
+		this.libelleProduit = libelleProduit;
+		this.prix = prix;
+	}
+
 	private static final long serialVersionUID = 1L;
 	
-	private Long idProduit;
-	private String codeProduit;
-	private String libelleProduit;
-	private float prix;
-
-	private Date dateCreation;
-	
-	private Date dateDerniereModification;
-	
-	private Stock stock;
-	
-	private Set<DetailFacture> detailFacture;
-	
-	private CategorieProduit categorieProduit;
+	public Long idProduit;
+	public String codeProduit;
+	public String libelleProduit;
+	public float prix;
+	public Date dateCreation;
+	public Date dateDerniereModification;
+	public Stock stock;
+	public Set<DetailFacture> detailFacture;
+	public CategorieProduit categorieProduit;
 
 }
