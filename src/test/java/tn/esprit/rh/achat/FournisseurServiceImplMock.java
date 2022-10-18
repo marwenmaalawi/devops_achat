@@ -1,6 +1,13 @@
 package tn.esprit.rh.achat;
 
 import java.util.ArrayList;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.willDoNothing;
+import static org.mockito.Mockito.*;
+import java.util.List;
+import java.util.Optional;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,13 +41,31 @@ public class FournisseurServiceImplMock {
 		add(p2);
 		}
 		};
+		
 	@Test
-	
+	public void createFournisseurTest()
+	{ 
+		FournisseurRequestModel pR=new FournisseurRequestModel((long) 1,"123","libelle 1");
+		fournisseurService.addFournisseur(pR);
+	}
+	@Test
 	public void testRetrieveUser() {
 	Mockito.when(fourniseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
 		Fournisseur fournisseur1 = fournisseurService.retrieveFournisseur((long)(2));
 		Assertions.assertNotNull(fournisseur1);
 		}
 	
+	@Test
+    public void updateFournisseurTest(){
+        p.setLibelle("Libelle 1 updated");
+        FournisseurRequestModel prm=new FournisseurRequestModel(p.getIdFournisseur(),p.getCode(),p.getLibelle());
+        Fournisseur updatedFournisseur = fournisseurService.updateFournisseur(prm);
+    }
+
+    @Test
+    public void deleteFournisseurTest(){
+        willDoNothing().given(fourniseurRepository).deleteById(p1.getIdFournisseur());
+        fournisseurService.deleteFournisseur(p1.getIdFournisseur());
+    }
 
 }
