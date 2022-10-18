@@ -56,6 +56,34 @@ public class Produit implements Serializable {
 	@ManyToOne
 	@JsonIgnore
 	private CategorieProduit categorieProduit;
+
+	public Long getIdProduit() {
+		return idProduit;
+	}
+	public void setIdProduit(Long idProduit) {
+		this.idProduit = idProduit;
+	}
+	public String getCodeProduit() {
+		return codeProduit;
+	}
+	public void setCodeProduit(String codeProduit) {
+		this.codeProduit = codeProduit;
+	}
+	public String getLibelleProduit() {
+		return libelleProduit;
+	}
+	public void setLibelleProduit(String libelleProduit) {
+		this.libelleProduit = libelleProduit;
+	}
+	public float getPrix() {
+		return prix;
+	}
+	public void setPrix(float prix) {
+		this.prix = prix;
+	}
+
+	
+	
 	
 
 

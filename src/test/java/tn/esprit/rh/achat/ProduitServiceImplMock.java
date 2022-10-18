@@ -1,6 +1,11 @@
 package tn.esprit.rh.achat;
 
 import java.util.ArrayList;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.willDoNothing;
+import static org.mockito.Mockito.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,12 +40,35 @@ public class ProduitServiceImplMock {
 		}
 		};
 		
-	@Test
-	public void testRetrieveProduit() {
+		@Test
+		public void createProduitTest()
+		{ 
+			ProduitRequestModel pR=new ProduitRequestModel((long) 1,"123","libelle 1",50);
+			produitService.addProduit(pR);
+		}
+	
+    @Test
+	public void RetrieveProduitTest() {
 	Mockito.when(produitReposotory.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
 		Produit produit1 = produitService.retrieveProduit((long)(2));
 		Assertions.assertNotNull(produit1);
 		}
+	
+    
+    @Test
+    public void updateProduitTest(){
+        p.setLibelleProduit("Libelle 1 updated");
+        ProduitRequestModel prm=new ProduitRequestModel(p.getIdProduit(),p.getCodeProduit(),p.getLibelleProduit(),p.getPrix());
+        Produit updatedProduit = produitService.updateProduit(prm);
+    }
+
+    @Test
+    public void deleteProduitTest(){
+        willDoNothing().given(produitReposotory).deleteById(p1.getIdProduit());
+        produitService.deleteProduit(p1.getIdProduit());
+    }
+
+
 	
 
 }
