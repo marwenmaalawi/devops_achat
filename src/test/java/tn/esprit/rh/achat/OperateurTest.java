@@ -1,5 +1,7 @@
 package tn.esprit.rh.achat;
 
+package tn.esprit.rh.achat;
+
 import static org.mockito.BDDMockito.willDoNothing;
 
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ import tn.esprit.rh.achat.repositories.OperateurRepository;
 import tn.esprit.rh.achat.services.OperateurServiceImpl;
 
 
-class OperatTest {
+class OperateurTest {
 
     @Mock
     OperateurRepository operateurRepository;
@@ -66,4 +68,5 @@ class OperatTest {
     }
 
 }
+
 
