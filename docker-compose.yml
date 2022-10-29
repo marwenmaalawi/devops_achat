@@ -6,8 +6,7 @@ services:
       - 3306:3306
   environment:
     MYSQL_DATABASE: achatdb
-    MYSQL_PASSWORD: mysql
-    MYSQL_ROOT_PASSWORD: mysql
+    DATABASE_PASSWORD: mysql
   application:
     image: achat
     depends_on:
