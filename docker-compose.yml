@@ -11,6 +11,7 @@ services:
   application:
     image: achat
     build: .
+    restart: always
     depends_on:
       - mysqldb 
     ports:
