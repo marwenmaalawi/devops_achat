@@ -23,7 +23,7 @@ import tn.esprit.rh.achat.repositories.OperateurRepository;
 import tn.esprit.rh.achat.services.OperateurServiceImpl;
 
 
-class OperateurTest {
+class OperateurServiceImplMock {
 
     @Mock
     OperateurRepository operateurRepository;
@@ -68,5 +68,6 @@ class OperateurTest {
     }
 
 }
+
 
 
