@@ -1,0 +1,18 @@
+version: '3'
+services:
+  mysqldb:
+    platform: linux/x86_64
+    image: "mysql:5.6"
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: achatdb
+      MYSQL_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: mysql
+application:
+    image: application
+    dockerfile: ./Dockerfile
+    depends_on:
+      - mysqldb 
+    ports:
+      - 8089:8089
