@@ -40,7 +40,7 @@ class OperateurServiceImplMock {
     };
 
     @Test
-    void createOperateur()
+    void createOperateurTest()
     {
         OperateurRequestModel o4=new OperateurRequestModel((long) 4,"nom 4","prenom 4","123",null);
         operateurService.addOperateur(o4);
@@ -55,12 +55,12 @@ class OperateurServiceImplMock {
     }
 
     @Test
-    void updateOperateur(){
+    void updateOperateurTest(){
         o4.setNom("nom 1 updated");
         Assertions.assertNotNull(operateurService.updateOperateur(o4));
     }
     @Test
-    void deleteOperateur(){
+    void deleteOperateurTest(){
         operateurService.deleteOperateur(o2.getIdOperateur());
         Assertions.assertNotNull(list);
     }
