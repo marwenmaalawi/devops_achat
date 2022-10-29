@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.repositories.StockRepository;
+import tn.esprit.rh.achat.entities.StockRequestModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,10 +34,12 @@ public class StockServiceImpl implements IStockService {
 	}
 
 	@Override
-	public Stock addStock(Stock s) {
+	public Stock addStock(StockRequestModel s) {
 		// récuperer la date à l'instant t1
 		log.info("In method addStock");
-		return stockRepository.save(s);
+		//(String libelleStock, Integer qte, Integer qteMin)
+		Stock s1 = new Stock(s.getLibelleStock(),s.getQte(),s.getQteMin());
+		return stockRepository.save(s1);
 		
 	}
 
@@ -48,9 +51,11 @@ public class StockServiceImpl implements IStockService {
 	}
 
 	@Override
-	public Stock updateStock(Stock s) {
+	public Stock updateStock(StockRequestModel s) {
+		Stock s1 = new Stock(s.getLibelleStock(),s.getQte(),s.getQteMin());
+		s1.setIdStock(s.getIdStock());
 		log.info("In method updateStock");
-		return stockRepository.save(s);
+		return stockRepository.save(s1);
 	}
 
 	@Override

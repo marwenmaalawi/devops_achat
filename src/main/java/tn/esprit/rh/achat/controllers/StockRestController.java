@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.services.IStockService;
+import tn.esprit.rh.achat.entities.StockRequestModel;
+
 
 import java.util.List;
 
 @RestController
 @Api(tags = "Gestion des stocks")
 @RequestMapping("/stock")
-@CrossOrigin("*")
 public class StockRestController {
 
 	@Autowired
@@ -36,7 +37,7 @@ public class StockRestController {
 	// http://localhost:8089/SpringMVC/stock/add-stock
 	@PostMapping("/add-stock")
 	@ResponseBody
-	public Stock addStock(@RequestBody Stock s) {
+	public Stock addStock(@RequestBody StockRequestModel s) {
 		Stock stock = stockService.addStock(s);
 		return stock;
 	}
@@ -51,7 +52,7 @@ public class StockRestController {
 	// http://localhost:8089/SpringMVC/stock/modify-stock
 	@PutMapping("/modify-stock")
 	@ResponseBody
-	public Stock modifyStock(@RequestBody Stock stock) {
+	public Stock modifyStock(@RequestBody StockRequestModel stock) {
 		return stockService.updateStock(stock);
 	}
 
