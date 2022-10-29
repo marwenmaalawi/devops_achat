@@ -17,5 +17,12 @@ public class StockRequestModel {
 	private Integer qte;
 	private Integer qteMin;
 	private Set<Produit> produits;
+	public StockRequestModel(String libelleStock, Integer qte, Integer qteMin) {
+		super();
+		this.libelleStock = libelleStock;
+		this.qte = qte;
+		this.qteMin = qteMin;
+	}
+
 
 }

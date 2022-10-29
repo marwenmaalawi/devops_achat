@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import tn.esprit.rh.achat.entities.Stock;
+import tn.esprit.rh.achat.entities.StockRequestModel;
 import tn.esprit.rh.achat.repositories.StockRepository;
 import tn.esprit.rh.achat.services.StockServiceImpl;
 
@@ -22,9 +23,12 @@ public class StockServiceImplMock {
 	StockRepository StockRepository;
 	@InjectMocks
 	StockServiceImpl StockServiceImpl;
-	Stock s= new Stock("libelle1",100,50);
+	StockRequestModel s= new StockRequestModel("libelle1",100,50);
+	
 	Stock s2= new Stock("libelle2",150,0);
 	Stock s3= new Stock("libelle3",130,70);
+	Stock s4= new Stock("libelle4",100,50);
+
 	
 	List<Stock> list = new ArrayList<Stock>() {
 		{	
@@ -36,13 +40,13 @@ public class StockServiceImplMock {
 	@Test
 	public void createStockTest()
 	{ 
-		Stock s= new Stock("libelle3",100,50);
+		StockRequestModel s= new StockRequestModel("libelle3",100,50);
 		StockServiceImpl.addStock(s);
 	}
 	
 	@Test
 	public void testRetrieveSock() {
-	Mockito.when(StockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
+	Mockito.when(StockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(s4));
 		Stock stock = StockServiceImpl.retrieveStock((long)(2));
 		Assertions.assertNotNull(s);
 	}
@@ -50,6 +54,7 @@ public class StockServiceImplMock {
 	@Test
     public void updateSockTest(){
         s.setLibelleStock("Libelle 1 updated");
+        
         StockServiceImpl.updateStock(s);
     }
 	@Test
