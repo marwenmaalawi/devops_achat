@@ -41,6 +41,7 @@ public class SecteurActiviteImplMock {
 	{ 
 		SecteurActivite s4=new SecteurActivite((long) 4,"400","libelle 4",null);
 		secteurActiviteService.addSecteurActivite(s4);
+		Assertions.assertNotNull(s4);
 	}
 	
 	@Test
@@ -53,11 +54,12 @@ public class SecteurActiviteImplMock {
 	@Test
     public void updateSecteurTest(){
         s.setLibelleSecteurActivite("Libelle 1 updated");
-        secteurActiviteService.updateSecteurActivite(s);
+        Assertions.assertNotNull(secteurActiviteService.updateSecteurActivite(s));
     }
 	@Test
     public void deleteSecteurTest(){
 		secteurActiviteService.deleteSecteurActivite(s2.getIdSecteurActivite());
+		Assertions.assertNotNull(list);
     }
 	
 }
