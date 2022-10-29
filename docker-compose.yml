@@ -4,9 +4,10 @@ services:
     image: mysql:5.6
     ports:
       - 3306:3306
-  environment:
-    MYSQL_DATABASE: achatdb
-    MYSQL_ROOT_PASSWORD: mysql
+    environment:
+      MYSQL_DATABASE: achatdb
+      MYSQL_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: mysql        
   application:
     image: achat
     depends_on:
