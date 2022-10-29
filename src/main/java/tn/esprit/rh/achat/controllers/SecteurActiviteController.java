@@ -26,7 +26,6 @@ import javax.persistence.ManyToMany;
 @RestController
 @Api(tags = "Gestion des secteurs activites")
 @RequestMapping("/secteurActivite")
-@CrossOrigin("*")
 public class SecteurActiviteController {
 
 	@Autowired

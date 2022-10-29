@@ -18,7 +18,7 @@ import tn.esprit.rh.achat.entities.SecteurActivite;
 import tn.esprit.rh.achat.repositories.SecteurActiviteRepository;
 import tn.esprit.rh.achat.services.SecteurActiviteServiceImpl;
 
-public class SecteurActiviteImplMock {
+class SecteurActiviteImplMock {
 	
 	@Mock
 	SecteurActiviteRepository secteurActiviteRepository;
@@ -37,27 +37,29 @@ public class SecteurActiviteImplMock {
 	};
 	
 	@Test
-	public void createSecteurTest()
+	void createSecteurTest()
 	{ 
 		SecteurActivite s4=new SecteurActivite((long) 4,"400","libelle 4",null);
 		secteurActiviteService.addSecteurActivite(s4);
+		Assertions.assertNotNull(s4);
 	}
 	
 	@Test
-	public void testRetrieveSecteur() {
+	void testRetrieveSecteur() {
 	Mockito.when(secteurActiviteRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
 		SecteurActivite secteur = secteurActiviteService.retrieveSecteurActivite((long)(2));
 		Assertions.assertNotNull(s);
 	}
 	
 	@Test
-    public void updateSecteurTest(){
+	void updateSecteurTest(){
         s.setLibelleSecteurActivite("Libelle 1 updated");
-        secteurActiviteService.updateSecteurActivite(s);
+        Assertions.assertNotNull(secteurActiviteService.updateSecteurActivite(s));
     }
 	@Test
-    public void deleteSecteurTest(){
+	void deleteSecteurTest(){
 		secteurActiviteService.deleteSecteurActivite(s2.getIdSecteurActivite());
+		Assertions.assertNotNull(list);
     }
 	
 }
