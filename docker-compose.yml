@@ -10,7 +10,7 @@ services:
       MYSQL_ROOT_PASSWORD: mysql        
   application:
     image: achat
-    dockerfile: ./Dockerfile
+    build: .
     depends_on:
       - mysqldb 
     ports:
