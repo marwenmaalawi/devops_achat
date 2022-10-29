@@ -2,7 +2,10 @@ package tn.esprit.rh.achat.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.rh.achat.entities.Fournisseur;
+import tn.esprit.rh.achat.entities.FournisseurRequestModel;
 import tn.esprit.rh.achat.entities.Operateur;
+import tn.esprit.rh.achat.entities.OperateurRequestModel;
 import tn.esprit.rh.achat.repositories.OperateurRepository;
 
 import java.util.List;
@@ -18,9 +21,10 @@ public class OperateurServiceImpl implements IOperateurService {
 	}
 
 	@Override
-	public Operateur addOperateur(Operateur o) {
-		operateurRepository.save(o);
-		return o;
+	public Operateur addOperateur(OperateurRequestModel o ) {
+		Operateur o1= new Operateur(o.getIdOperateur(),o.getNom(),o.getPrenom(),o.getPassword());
+		operateurRepository.save(o1);
+		return o1;
 	}
 
 	@Override
@@ -30,9 +34,10 @@ public class OperateurServiceImpl implements IOperateurService {
 	}
 
 	@Override
-	public Operateur updateOperateur(Operateur o) {
-		operateurRepository.save(o);
-		return o;
+	public Operateur updateOperateur(OperateurRequestModel o) {
+
+		return operateurRepository.save( new Operateur(o.getIdOperateur(),o.getNom(),o.getPrenom(),o.getPassword()));
+
 	}
 
 	@Override

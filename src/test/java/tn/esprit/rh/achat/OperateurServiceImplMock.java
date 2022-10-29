@@ -15,6 +15,7 @@ import org.mockito.Mockito;
 import tn.esprit.rh.achat.entities.Operateur;
 
 
+import tn.esprit.rh.achat.entities.OperateurRequestModel;
 import tn.esprit.rh.achat.repositories.OperateurRepository;
 
 import tn.esprit.rh.achat.services.OperateurServiceImpl;
@@ -30,7 +31,7 @@ class OperateurServiceImplMock {
     Operateur o= new Operateur((long) 1,"nom 1","prenom 1","123",null);
     Operateur o2= new Operateur((long) 2,"nom 2","prenom 2","123",null);
     Operateur o3= new Operateur((long) 3,"nom 3","prenom 3","123",null);
-
+    OperateurRequestModel o4= new OperateurRequestModel((long) 4,"nom 4","prenom 4","123",null);
     List<Operateur> list = new ArrayList<Operateur>() {
         {
             add(o2);
@@ -41,7 +42,7 @@ class OperateurServiceImplMock {
     @Test
     void createOperateur()
     {
-        Operateur o4=new Operateur((long) 4,"nom 4","prenom 4","123",null);
+        OperateurRequestModel o4=new OperateurRequestModel((long) 4,"nom 4","prenom 4","123",null);
         operateurService.addOperateur(o4);
         Assertions.assertNotNull(o4);
     }
@@ -55,8 +56,8 @@ class OperateurServiceImplMock {
 
     @Test
     void updateOperateur(){
-        o.setNom("nom 1 updated");
-        Assertions.assertNotNull(operateurService.updateOperateur(o));
+        o4.setNom("nom 1 updated");
+        Assertions.assertNotNull(operateurService.updateOperateur(o4));
     }
     @Test
     void deleteOperateur(){

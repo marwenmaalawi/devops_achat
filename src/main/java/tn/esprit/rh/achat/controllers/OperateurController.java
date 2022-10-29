@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.rh.achat.entities.Operateur;
+import tn.esprit.rh.achat.entities.OperateurRequestModel;
 import tn.esprit.rh.achat.services.IOperateurService;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class OperateurController {
 	// http://localhost:8089/SpringMVC/operateur/add-operateur
 	@PostMapping("/add-operateur")
 	@ResponseBody
-	public Operateur addOperateur(@RequestBody Operateur op) {
+	public Operateur addOperateur(@RequestBody OperateurRequestModel op) {
 		Operateur operateur = operateurService.addOperateur(op);
 		return operateur;
 	}
@@ -49,7 +50,7 @@ public class OperateurController {
 	// http://localhost:8089/SpringMVC/operateur/modify-operateur
 	@PutMapping("/modify-operateur")
 	@ResponseBody
-	public Operateur modifyOperateur(@RequestBody Operateur operateur) {
+	public Operateur modifyOperateur(@RequestBody OperateurRequestModel operateur) {
 		return operateurService.updateOperateur(operateur);
 	}
 
