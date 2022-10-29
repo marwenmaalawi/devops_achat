@@ -9,7 +9,7 @@ services:
       MYSQL_DATABASE: achatdb
       MYSQL_PASSWORD: mysql
       MYSQL_ROOT_PASSWORD: mysql
-application:
+  application:
     image: application
     dockerfile: ./Dockerfile
     depends_on:
