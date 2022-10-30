@@ -21,21 +21,19 @@ import tn.esprit.rh.achat.repositories.StockRepository;
 import tn.esprit.rh.achat.services.StockServiceImpl;
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-class StockServiceMockTest {
+class StockServiceMock {
 	
 	@Mock
 	StockRepository StockRepository;
 	@InjectMocks
 	StockServiceImpl StockServiceImpl;
-	@InjectMocks
 	StockRequestModel s= new StockRequestModel("libelle1",100,50);
-	@InjectMocks
+	
 	Stock s2= new Stock("libelle2",150,0);
-	@InjectMocks
 	Stock s3= new Stock("libelle3",130,70);
-	@InjectMocks
 	Stock s4= new Stock("libelle4",100,50);
-	@InjectMocks
+
+	
 	List<Stock> list = new ArrayList<Stock>() {
 		{	
 			add(s2);
