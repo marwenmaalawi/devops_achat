@@ -17,7 +17,7 @@ import tn.esprit.rh.achat.entities.StockRequestModel;
 import tn.esprit.rh.achat.repositories.StockRepository;
 import tn.esprit.rh.achat.services.StockServiceImpl;
 
-class StockServiceImplMock {
+class StockServiceImplMockTest {
 	
 	@Mock
 	StockRepository StockRepository;
