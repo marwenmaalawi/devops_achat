@@ -8,31 +8,34 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.entities.StockRequestModel;
 import tn.esprit.rh.achat.repositories.StockRepository;
 import tn.esprit.rh.achat.services.StockServiceImpl;
-@RunWith(MockitoJUnitRunner.class)
+@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class StockServiceMockTest {
 	
 	@Mock
 	StockRepository StockRepository;
 	@InjectMocks
 	StockServiceImpl StockServiceImpl;
+	@InjectMocks
 	StockRequestModel s= new StockRequestModel("libelle1",100,50);
-	
+	@InjectMocks
 	Stock s2= new Stock("libelle2",150,0);
+	@InjectMocks
 	Stock s3= new Stock("libelle3",130,70);
+	@InjectMocks
 	Stock s4= new Stock("libelle4",100,50);
-
-	
+	@InjectMocks
 	List<Stock> list = new ArrayList<Stock>() {
 		{	
 			add(s2);
@@ -50,8 +53,8 @@ class StockServiceMockTest {
 	@Test
 	 void testRetrieveSock() {
 	Mockito.when(StockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(s4));
-		StockServiceImpl.retrieveStock((long)(2));
-	
+		Stock stock = StockServiceImpl.retrieveStock((long)(2));
+		Assertions.assertNotNull(stock);
 	}
 	
 	@Test
