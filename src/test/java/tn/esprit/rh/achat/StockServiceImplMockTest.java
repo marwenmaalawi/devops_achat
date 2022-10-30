@@ -20,7 +20,6 @@ import tn.esprit.rh.achat.entities.StockRequestModel;
 import tn.esprit.rh.achat.repositories.StockRepository;
 import tn.esprit.rh.achat.services.StockServiceImpl;
 @SpringBootTest
-@ExtendWith(MockitoExtension.class)
 class StockServiceImplMockTest {
 	
 	@Mock
