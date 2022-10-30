@@ -41,7 +41,7 @@ class StockServiceImplMock {
 	 void createStockTest()
 	{ 
 		StockRequestModel s= new StockRequestModel("libelle3",100,50);
-		StockServiceImpl.addStock(s);
+		Assertions.assertNotNull(StockServiceImpl.addStock(s));
 	}
 	
 	@Test
@@ -54,13 +54,14 @@ class StockServiceImplMock {
 	@Test
      void updateSockTest(){
         s.setLibelleStock("Libelle 1 updated");
-        
-        StockServiceImpl.updateStock(s);
+        Assertions.assertNotNull( StockServiceImpl.updateStock(s));
+       
     }
 	@Test
      void deleteSecteurTest(){
 		StockServiceImpl.deleteStock(s2.getIdStock());
-		
+        Assertions.assertNotNull(list);
+
     }
 	
 }
