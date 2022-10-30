@@ -17,7 +17,7 @@ import tn.esprit.rh.achat.entities.StockRequestModel;
 import tn.esprit.rh.achat.repositories.StockRepository;
 import tn.esprit.rh.achat.services.StockServiceImpl;
 
-public class StockServiceImplMock {
+class StockServiceImplMock {
 	
 	@Mock
 	StockRepository StockRepository;
@@ -38,27 +38,27 @@ public class StockServiceImplMock {
 	};
 	
 	@Test
-	public void createStockTest()
+	 void createStockTest()
 	{ 
 		StockRequestModel s= new StockRequestModel("libelle3",100,50);
 		StockServiceImpl.addStock(s);
 	}
 	
 	@Test
-	public void testRetrieveSock() {
+	 void testRetrieveSock() {
 	Mockito.when(StockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(s4));
 		Stock stock = StockServiceImpl.retrieveStock((long)(2));
 		Assertions.assertNotNull(s);
 	}
 	
 	@Test
-    public void updateSockTest(){
+     void updateSockTest(){
         s.setLibelleStock("Libelle 1 updated");
         
         StockServiceImpl.updateStock(s);
     }
 	@Test
-    public void deleteSecteurTest(){
+     void deleteSecteurTest(){
 		StockServiceImpl.deleteStock(s2.getIdStock());
 		
     }
