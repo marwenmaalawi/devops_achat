@@ -13,7 +13,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.entities.StockRequestModel;
@@ -23,9 +25,9 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 @ExtendWith(MockitoExtension.class)
 class StockServiceMockTest {
 	
-	@Mock
+	@MockBean
 	StockRepository StockRepository;
-	@InjectMocks
+	@Autowired
 	StockServiceImpl StockServiceImpl;
 	StockRequestModel s= new StockRequestModel("libelle1",100,50);
 	Stock s2= new Stock("libelle2",150,0);
