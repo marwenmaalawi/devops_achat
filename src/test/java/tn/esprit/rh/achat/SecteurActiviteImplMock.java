@@ -8,16 +8,20 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import tn.esprit.rh.achat.entities.Fournisseur;
 import tn.esprit.rh.achat.entities.FournisseurRequestModel;
 import tn.esprit.rh.achat.entities.SecteurActivite;
 import tn.esprit.rh.achat.repositories.SecteurActiviteRepository;
 import tn.esprit.rh.achat.services.SecteurActiviteServiceImpl;
-
+@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class SecteurActiviteImplMock {
 	
 	@Mock
@@ -38,23 +42,23 @@ class SecteurActiviteImplMock {
 	
 	@Test
 	void createSecteurTest()
-	{ 
+	{     
 		SecteurActivite s4=new SecteurActivite((long) 4,"400","libelle 4",null);
-		secteurActiviteService.addSecteurActivite(s4);
-		Assertions.assertNotNull(s4);
+		Mockito.when(secteurActiviteRepository.save(s4)).thenReturn(s4);	
+		Assertions.assertEquals(s4,secteurActiviteService.addSecteurActivite(s4));
 	}
 	
 	@Test
 	void testRetrieveSecteur() {
-	Mockito.when(secteurActiviteRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
-		SecteurActivite secteur = secteurActiviteService.retrieveSecteurActivite((long)(2));
-		Assertions.assertNotNull(s);
+        Mockito.when(secteurActiviteRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(s2));
+		Assertions.assertEquals(s2,secteurActiviteService.retrieveSecteurActivite((long)2));
 	}
 	
 	@Test
 	void updateSecteurTest(){
+		Mockito.when(secteurActiviteRepository.save(s)).thenReturn(s);
         s.setLibelleSecteurActivite("Libelle 1 updated");
-        Assertions.assertNotNull(secteurActiviteService.updateSecteurActivite(s));
+        Assertions.assertEquals(s,secteurActiviteService.updateSecteurActivite(s));
     }
 	@Test
 	void deleteSecteurTest(){
