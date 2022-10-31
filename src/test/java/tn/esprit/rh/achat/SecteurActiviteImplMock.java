@@ -9,20 +9,18 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
+
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.rh.achat.entities.SecteurActivite;
 import tn.esprit.rh.achat.repositories.SecteurActiviteRepository;
 import tn.esprit.rh.achat.services.SecteurActiviteServiceImpl;
-@RunWith(SpringRunner.class)
+
 @SpringBootTest
-@TestMethodOrder(OrderAnnotation.class)
 @ExtendWith(MockitoExtension.class)
 class SecteurActiviteImplMock {
 	
@@ -48,17 +46,15 @@ class SecteurActiviteImplMock {
 	void testRetrieveSecteur() {
         Mockito.when(secteurActiviteRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
         SecteurActivite secteur = secteurActiviteService.retrieveSecteurActivite((long)2);
-        System.out.print("Test retrieve");
         Assertions.assertNotNull(secteur);
         
 	}
 	
-	/*@Test
+	@Test
 	void createSecteurTest()
 	{     
 		SecteurActivite s4=new SecteurActivite((long) 4,"400","libelle 4",null);
 		Mockito.when(secteurActiviteRepository.save(s4)).thenReturn(s4);
-		
 		Assertions.assertEquals(s4,secteurActiviteService.addSecteurActivite(s4));
 	}
 	
@@ -72,6 +68,6 @@ class SecteurActiviteImplMock {
 	void deleteSecteurTest(){
 		secteurActiviteService.deleteSecteurActivite(s2.getIdSecteurActivite());
 		Assertions.assertNotNull(list);
-    }*/
+    }
 	
 }
