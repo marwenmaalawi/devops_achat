@@ -55,14 +55,16 @@ class SecteurActiviteImplMock {
 	{     
 		SecteurActivite s4=new SecteurActivite((long) 4,"400","libelle 4",null);
 		Mockito.when(secteurActiviteRepository.save(s4)).thenReturn(s4);
-		Assertions.assertEquals(s4,secteurActiviteService.addSecteurActivite(s4));
+		list.add(s4);
+		Assertions.assertEquals(3,list.size());
 	}
 	
 	@Test
 	void updateSecteurTest(){
 		Mockito.when(secteurActiviteRepository.save(s)).thenReturn(s);
         s.setLibelleSecteurActivite("Libelle 1 updated");
-        Assertions.assertEquals(s,secteurActiviteService.updateSecteurActivite(s));
+        SecteurActivite secteur = secteurActiviteService.updateSecteurActivite(s);
+        Assertions.assertEquals(s,secteur);
     }
 	@Test
 	void deleteSecteurTest(){
