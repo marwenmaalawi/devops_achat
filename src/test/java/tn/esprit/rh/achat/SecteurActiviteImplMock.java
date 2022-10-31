@@ -6,8 +6,6 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import org.mockito.InjectMocks;
@@ -66,6 +64,7 @@ class SecteurActiviteImplMock {
         SecteurActivite secteur = secteurActiviteService.updateSecteurActivite(s);
         Assertions.assertEquals(s,secteur);
     }
+	
 	@Test
 	void deleteSecteurTest(){
 		secteurActiviteService.deleteSecteurActivite(s2.getIdSecteurActivite());
