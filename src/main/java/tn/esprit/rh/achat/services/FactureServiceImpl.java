@@ -31,18 +31,29 @@ public class FactureServiceImpl implements IFactureService {
 	
 	@Override
 	public List<Facture> retrieveAllFactures() {
-		List<Facture> factures = (List<Facture>) factureRepository.findAll();
-		for (Facture facture : factures) {
-			log.info(" facture : " + facture);
-		}
+		List<Facture> factures =  factureRepository.findAll();
+
 		return factures;
 	}
 
 	
-	public Facture addFacture(Facture f) {
-		return factureRepository.save(f);
+	public Facture addFacture(FactureRequestModel f) {
+		Facture facture1= new Facture(f.idFacture,f.montantRemise,f.montantFacture,f.dateCreationFacture);
+		factureRepository.save(facture1);
+		return facture1;
 	}
 
+
+	public Facture updateFacture(FactureRequestModel f) {
+		factureRepository.save( new Facture(f.idFacture,f.montantRemise,f.montantFacture,f.dateCreationFacture));
+		return  new Facture(f.idFacture,f.montantRemise,f.montantFacture,f.dateCreationFacture);
+	}
+
+
+	public void deleteFacture(Long FactureId) {
+		factureRepository.deleteById(FactureId);
+
+	}
 	/*
 	 * calculer les montants remise et le montant total d'un détail facture
 	 * ainsi que les montants d'une facture
@@ -51,7 +62,7 @@ public class FactureServiceImpl implements IFactureService {
 		float montantFacture = 0;
 		float montantRemise = 0;
 		for (DetailFacture detail : detailsFacture) {
-			//Récuperer le produit 
+			//Récuperer le produit
 			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).get();
 			//Calculer le montant total pour chaque détail Facture
 			float prixTotalDetail = detail.getQteCommandee() * produit.getPrix();

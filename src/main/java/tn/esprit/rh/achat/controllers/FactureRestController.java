@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.rh.achat.entities.Facture;
+import tn.esprit.rh.achat.entities.FactureRequestModel;
 import tn.esprit.rh.achat.services.IFactureService;
 
 import java.util.Date;
@@ -38,11 +39,15 @@ public class FactureRestController {
     // http://localhost:8089/SpringMVC/facture/add-facture/{fournisseur-id}
     @PostMapping("/add-facture")
     @ResponseBody
-    public Facture addFacture(@RequestBody Facture f) {
+    public Facture addFacture(@RequestBody FactureRequestModel f) {
         Facture facture = factureService.addFacture(f);
         return facture;
     }
-
+    @PutMapping("/modify-facture")
+    @ResponseBody
+    public Facture modifyFacture(@RequestBody FactureRequestModel facture) {
+        return factureService.updateFacture(facture);
+    }
     /*
      * une facture peut etre annulé si elle a été saisie par erreur Pour ce
      * faire, il suffit de mettre le champs active à false
