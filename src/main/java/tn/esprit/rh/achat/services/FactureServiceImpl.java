@@ -59,7 +59,7 @@ public class FactureServiceImpl implements IFactureService {
 	private Facture addDetailsFacture(Facture f, Set<DetailFacture> detailsFacture) {
 		float montantFacture = 0;
 		float montantRemise = 0;
-		for (DetailFacture detail : detailsFacture) {
+	/*	for (DetailFacture detail : detailsFacture) {
 			//Récuperer le produit
 			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).orElse(null);
 			//Calculer le montant total pour chaque détail Facture
@@ -74,7 +74,7 @@ public class FactureServiceImpl implements IFactureService {
 			//Calculer le montant remise pour la facture
 			montantRemise = montantRemise + montantRemiseDetail;
 			detailFactureRepository.save(detail);
-		}
+		}*/
 		f.setMontantFacture(montantFacture);
 		f.setMontantRemise(montantRemise);
 		return f;
@@ -112,6 +112,7 @@ public class FactureServiceImpl implements IFactureService {
 		operateur.getFactures().add(facture);
 		operateurRepository.save(operateur);*/
 	}
+
 
 	@Override
 	public float pourcentageRecouvrement(Date startDate, Date endDate) {
