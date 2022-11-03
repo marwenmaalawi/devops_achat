@@ -1,6 +1,7 @@
 package tn.esprit.rh.achat.services;
 
 import tn.esprit.rh.achat.entities.Fournisseur;
+import tn.esprit.rh.achat.entities.FournisseurRequestModel;
 
 import java.util.List;
 
@@ -8,11 +9,11 @@ public interface IFournisseurService {
 
 	List<Fournisseur> retrieveAllFournisseurs();
 
-	Fournisseur addFournisseur(Fournisseur f);
+	Fournisseur addFournisseur(FournisseurRequestModel f);
 
 	void deleteFournisseur(Long id);
 
-	Fournisseur updateFournisseur(Fournisseur f);
+	Fournisseur updateFournisseur(FournisseurRequestModel f);
 
 	Fournisseur retrieveFournisseur(Long id);
 	
