@@ -1,4 +1,4 @@
-/* package tn.esprit.rh.achat;
+ package tn.esprit.rh.achat;
 
 import java.util.ArrayList;
 import static org.mockito.Mockito.when;
@@ -76,4 +76,3 @@ import tn.esprit.rh.achat.services.FournisseurServiceImpl;
     }
 
 }
-*/
