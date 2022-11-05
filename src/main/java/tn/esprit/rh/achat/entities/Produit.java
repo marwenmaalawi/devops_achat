@@ -35,6 +35,8 @@ public class Produit implements Serializable {
 		this.codeProduit = codeProduit;
 		this.libelleProduit = libelleProduit;
 		this.prix = prix;
+		this.dateCreation=new Date();
+		this.dateDerniereModification=new Date();
 
 	}
 	@Id
@@ -80,6 +82,12 @@ public class Produit implements Serializable {
 	}
 	public void setPrix(float prix) {
 		this.prix = prix;
+	}
+	public Date getDateDerniereModification() {
+		return dateDerniereModification;
+	}
+	public void setDateDerniereModification(Date dateDerniereModification) {
+		this.dateDerniereModification = dateDerniereModification;
 	}
 
 	

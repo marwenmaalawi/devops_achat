@@ -9,6 +9,8 @@ import tn.esprit.rh.achat.repositories.CategorieProduitRepository;
 import tn.esprit.rh.achat.repositories.ProduitRepository;
 import tn.esprit.rh.achat.repositories.StockRepository;
 import javax.transaction.Transactional;
+
+import java.util.Date;
 import java.util.List;
 
 
@@ -31,6 +33,7 @@ public class ProduitServiceImpl implements IProduitService {
 	@Transactional
 	public Produit addProduit(ProduitRequestModel p) {
 		Produit p1=new Produit((long)p.idProduit,p.codeProduit,p.libelleProduit,p.prix);
+		
 		produitRepository.save(p1);
 		return p1;
 	}
@@ -43,6 +46,7 @@ public class ProduitServiceImpl implements IProduitService {
 	@Override
 	public Produit updateProduit(ProduitRequestModel p) {
 		Produit p1=new Produit((long)p.idProduit,p.codeProduit,p.libelleProduit,p.prix);
+		p1.setDateDerniereModification(new Date());
 		return produitRepository.save(p1);
 	}
 
