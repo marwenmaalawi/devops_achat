@@ -26,7 +26,7 @@ import tn.esprit.rh.achat.services.ProduitServiceImpl;
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 
-    class TestProduitServiceImplMock {
+    class ProduitServiceImplMock {
 	@Mock
 	ProduitRepository produitReposotory;
 	@InjectMocks
