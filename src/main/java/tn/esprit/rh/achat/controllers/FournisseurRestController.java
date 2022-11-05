@@ -48,7 +48,6 @@ public class FournisseurRestController {
 		fournisseurService.deleteFournisseur(fournisseurId);
 	}
 
-	
 	// http://localhost:8089/SpringMVC/fournisseur/modify-fournisseur
 	@PutMapping("/modify-fournisseur")
 	@ResponseBody
