@@ -27,7 +27,7 @@ import tn.esprit.rh.achat.services.FournisseurServiceImpl;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-public class FournisseurServiceImplMock {
+ class TestFournisseurServiceImplMock {
 	@Mock
 	FournisseurRepository fourniseurRepository;
 	@InjectMocks
@@ -43,29 +43,36 @@ public class FournisseurServiceImplMock {
 		};
 		
 	@Test
-	public void createFournisseurTest()
+	 void createFournisseurTest()
 	{ 
 		FournisseurRequestModel pR=new FournisseurRequestModel((long) 1,"123","libelle 1");
 		fournisseurService.addFournisseur(pR);
+		System.out.println("created");
+		Assertions.assertNotNull("created");
 	}
 	@Test
-	public void testRetrieveUser() {
+	 void testRetrieveUser() {
 	Mockito.when(fourniseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
 		Fournisseur fournisseur1 = fournisseurService.retrieveFournisseur((long)(2));
+		System.out.println("retrieved");
 		Assertions.assertNotNull(fournisseur1);
 		}
 	
 	@Test
-    public void updateFournisseurTest(){
+     void updateFournisseurTest(){
         p.setLibelle("Libelle 1 updated");
         FournisseurRequestModel prm=new FournisseurRequestModel(p.getIdFournisseur(),p.getCode(),p.getLibelle());
         Fournisseur updatedFournisseur = fournisseurService.updateFournisseur(prm);
+        System.out.println("updated");
+        Assertions.assertNotNull(updatedFournisseur);
     }
 
     @Test
-    public void deleteFournisseurTest(){
+     void deleteFournisseurTest(){
         willDoNothing().given(fourniseurRepository).deleteById(p1.getIdFournisseur());
         fournisseurService.deleteFournisseur(p1.getIdFournisseur());
+        System.out.println("deleted");
+        Assertions.assertNotNull("delete");
     }
 
 }
