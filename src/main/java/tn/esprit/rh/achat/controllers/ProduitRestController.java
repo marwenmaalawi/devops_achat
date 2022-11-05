@@ -49,10 +49,6 @@ public class ProduitRestController {
 		return produitService.updateProduit(p);
 	}
 
-	@PutMapping(value = "/assignProduitToStock/{idProduit}/{idStock}")
-	public void assignProduitToStock(@PathVariable("idProduit") Long idProduit, @PathVariable("idStock") Long idStock) {
-		produitService.assignProduitToStock(idProduit, idStock);
-	}
 
 
 }
