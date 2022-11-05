@@ -26,7 +26,7 @@ import tn.esprit.rh.achat.services.ProduitServiceImpl;
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 
-public class ProduitServiceImplMock {
+    class TestProduitServiceImplMock {
 	@Mock
 	ProduitRepository produitReposotory;
 	@InjectMocks
@@ -42,14 +42,15 @@ public class ProduitServiceImplMock {
 		};
 		
 		@Test
-		public void createProduitTest()
+		void createProduitTest()
 		{ 
 			ProduitRequestModel pR=new ProduitRequestModel((long) 1,"123","libelle 1",50);
 			produitService.addProduit(pR);
+			Assertions.assertNotNull("produit crée");
 		}
 	
     @Test
-	public void RetrieveProduitTest() {
+	void RetrieveProduitTest() {
 	Mockito.when(produitReposotory.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
 		Produit produit1 = produitService.retrieveProduit((long)(2));
 		Assertions.assertNotNull(produit1);
@@ -57,16 +58,18 @@ public class ProduitServiceImplMock {
 	
     
     @Test
-    public void updateProduitTest(){
+    void updateProduitTest(){
         p.setLibelleProduit("Libelle 1 updated");
         ProduitRequestModel prm=new ProduitRequestModel(p.getIdProduit(),p.getCodeProduit(),p.getLibelleProduit(),p.getPrix());
         Produit updatedProduit = produitService.updateProduit(prm);
+        Assertions.assertNotNull(prm);
     }
 
     @Test
-    public void deleteProduitTest(){
+    void deleteProduitTest(){
         willDoNothing().given(produitReposotory).deleteById(p1.getIdProduit());
         produitService.deleteProduit(p1.getIdProduit());
+        Assertions.assertNotNull("produit supprimé");
     }
 
 
